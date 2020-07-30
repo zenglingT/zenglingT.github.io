@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>QQ提醒测试页</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<script src="https://open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
+<script type="text/javascript">
+	function call(arguments) {
+		list = arguments.split(",");
+		mqq.invoke('qw_mix', 'qqNotify', {
+			"action":list[0],
+			"params": {
+				"msgid": list[1],
+				"busiid": list[2],
+				"domain":list[3]
+			},
+			"callback": "callback"
+		});
+	}
+
+	function callback(arguments) {
+		alert(JSON.stringify(arguments))
+	}
+	//test();
+</script>
+<body>
+argument format: action,msgid,busid,domain<br>
+argument: <input type="text" value="msgId" id="argument"><br>
+<button onclick="call(document.getElementById('argument').value)">Add</button>
+</body>
+</html>
