@@ -7,14 +7,13 @@
 </head>
 <script src="https://open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
 <script type="text/javascript">
-	function call(arguments) {
-		list = arguments.split(",");
+	function call(msgid, busid, operator) {
 		mqq.invoke('qw_mix', 'qqNotify', {
-			"action":list[0],
+			"action":operator,
 			"params": {
-				"msgid": list[1],
-				"busiid": list[2],
-				"domain":list[3]
+				"msgid": msgid,
+				"busiid": busid,
+				"domain": "zenglingt.github.io"
 			},
 			"callback": "callback"
 		});
@@ -27,7 +26,9 @@
 </script>
 <body>
 argument format: action,msgid,busid,domain<br>
-argument: <input type="text" value="msgId" id="argument"><br>
-<button onclick="call(document.getElementById('argument').value)">Add</button>
+msgid: <input type="text" value="msgId" id="msgid"><br>
+busid: <input type="text" value="msgId" id="busid"><br>
+operator: <input type="text" value="subscribe" id="operator"><br>
+<button onclick="call(document.getElementById('msgid').value, document.getElementById('busid').value, document.getElementById('operator').value)">Add</button>
 </body>
 </html>
